@@ -94,8 +94,8 @@ header {
 }
 
 .profile-pic {
-  width: 110px;
-  height: 110px;
+  width: 130px;
+  height: 130px;
   border-radius: 50%;
   object-fit: cover;
   border: 3px solid transparent;
@@ -177,7 +177,7 @@ nav {
   display: flex;
   gap: 6px;
   flex-wrap: wrap;
-  justify-self: end;
+  justify-self: center;
   align-items: center;
 }
 
