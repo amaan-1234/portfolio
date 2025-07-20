@@ -328,36 +328,7 @@ document.addEventListener('DOMContentLoaded', function() {
         };
     }
     
-    // Add loading state management
-    window.addEventListener('load', function() {
-        document.body.style.opacity = '1';
-        document.body.style.transition = 'opacity 0.5s ease';
-        
-        // Trigger initial animations
-        setTimeout(() => {
-            sectionsToAnimate.forEach((section, index) => {
-                setTimeout(() => {
-                    section.style.opacity = '1';
-                    section.style.transform = 'translateY(0)';
-                }, index * 100);
-            });
-        }, 300);
-    });
-    
-    // Add error handling for missing elements
-    function safeQuerySelector(selector) {
-        try {
-            return document.querySelector(selector);
-        } catch (error) {
-            console.warn(`Element not found: ${selector}`);
-            return null;
-        }
-    }
-    
-    console.log('🚀 Portfolio enhanced successfully! All features loaded.');
-});
-
-// =======================
+    // =======================
     // BACK TO TOP BUTTON
     // =======================
     
@@ -393,3 +364,32 @@ document.addEventListener('DOMContentLoaded', function() {
             this.style.transform = '';
         }, 150);
     });
+    
+    // Add loading state management
+    window.addEventListener('load', function() {
+        document.body.style.opacity = '1';
+        document.body.style.transition = 'opacity 0.5s ease';
+        
+        // Trigger initial animations
+        setTimeout(() => {
+            sectionsToAnimate.forEach((section, index) => {
+                setTimeout(() => {
+                    section.style.opacity = '1';
+                    section.style.transform = 'translateY(0)';
+                }, index * 100);
+            });
+        }, 300);
+    });
+    
+    // Add error handling for missing elements
+    function safeQuerySelector(selector) {
+        try {
+            return document.querySelector(selector);
+        } catch (error) {
+            console.warn(`Element not found: ${selector}`);
+            return null;
+        }
+    }
+    
+    console.log('🚀 Portfolio enhanced successfully! All features loaded.');
+});
