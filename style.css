@@ -9,6 +9,8 @@
   --primary-blue: #2563eb;
   --secondary-blue: #3b82f6;
   --accent-blue: #60a5fa;
+  --purple: #8b5cf6;
+  --pink: #ec4899;
   --light-blue: #dbeafe;
   --dark-blue: #1e40af;
   --text-primary: #1f2937;
@@ -26,7 +28,7 @@
 
 body {
   font-family: 'Inter', 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
   min-height: 100vh;
   color: var(--text-primary);
   line-height: 1.7;
@@ -43,11 +45,12 @@ body::before {
   width: 100%;
   height: 100%;
   background: 
-    radial-gradient(circle at 20% 50%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
-    radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
-    radial-gradient(circle at 40% 80%, rgba(120, 200, 255, 0.3) 0%, transparent 50%);
+    radial-gradient(circle at 20% 50%, rgba(139, 92, 246, 0.4) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(236, 72, 153, 0.4) 0%, transparent 50%),
+    radial-gradient(circle at 40% 80%, rgba(96, 165, 250, 0.4) 0%, transparent 50%),
+    radial-gradient(circle at 60% 40%, rgba(34, 197, 94, 0.3) 0%, transparent 50%);
   z-index: -1;
-  animation: float 20s ease-in-out infinite;
+  animation: float 25s ease-in-out infinite;
 }
 
 @keyframes float {
@@ -65,60 +68,78 @@ body::before {
 
 /* Header Styles */
 header {
-  background: rgba(255, 255, 255, 0.95);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 250, 252, 0.95) 100%);
   backdrop-filter: blur(20px) saturate(180%);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid rgba(37, 99, 235, 0.1);
   position: sticky;
   top: 0;
   z-index: 100;
   transition: var(--transition);
-  box-shadow: var(--shadow-sm);
+  box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.1), 0 2px 4px -1px rgba(37, 99, 235, 0.06);
 }
 
 .header-content {
-  display: flex;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
   align-items: center;
-  justify-content: space-between;
-  padding: 24px 0;
-  flex-wrap: wrap;
-  gap: 20px;
+  padding: 20px 0;
+  gap: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 .profile-section {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 16px;
 }
 
 .profile-pic {
-  width: 80px;
-  height: 80px;
+  width: 85px;
+  height: 85px;
   border-radius: 50%;
   object-fit: cover;
-  border: 3px solid var(--primary-blue);
-  box-shadow: var(--shadow-md);
+  border: 3px solid transparent;
+  background: linear-gradient(135deg, var(--primary-blue) 0%, #8b5cf6 50%, #ec4899 100%);
+  padding: 3px;
+  box-shadow: 0 8px 25px rgba(37, 99, 235, 0.15);
   transition: var(--transition);
   position: relative;
+}
+
+.profile-pic img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
 }
 
 .profile-pic::before {
   content: '';
   position: absolute;
-  inset: -3px;
-  background: linear-gradient(45deg, var(--primary-blue), var(--accent-blue));
+  inset: -6px;
+  background: linear-gradient(45deg, var(--primary-blue), #8b5cf6, #ec4899, var(--accent-blue));
   border-radius: 50%;
   z-index: -1;
   opacity: 0;
   transition: var(--transition);
+  animation: rotate 4s linear infinite;
+}
+
+@keyframes rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
 .profile-pic:hover::before {
-  opacity: 1;
-  animation: pulse 2s infinite;
+  opacity: 0.8;
 }
 
 .profile-pic:hover {
-  transform: scale(1.05);
+  transform: scale(1.08);
+  box-shadow: 0 12px 40px rgba(37, 99, 235, 0.25);
 }
 
 @keyframes pulse {
@@ -127,40 +148,54 @@ header {
   100% { transform: scale(1); }
 }
 
+.header-text {
+  text-align: center;
+  flex: 1;
+}
+
 .header-text h1 {
-  font-size: 1.875rem;
-  font-weight: 700;
+  font-size: 2.25rem;
+  font-weight: 800;
   color: var(--text-primary);
-  margin-bottom: 4px;
-  background: linear-gradient(135deg, var(--primary-blue), var(--dark-blue));
+  margin-bottom: 8px;
+  background: linear-gradient(135deg, var(--primary-blue) 0%, #8b5cf6 50%, #ec4899 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -0.02em;
+}
+
+.header-text p {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+  background: linear-gradient(135deg, var(--text-secondary) 0%, var(--primary-blue) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-.header-text p {
-  font-size: 1rem;
-  color: var(--text-secondary);
-  font-weight: 500;
-}
-
 /* Navigation Styles */
 nav {
   display: flex;
-  gap: 8px;
+  gap: 6px;
   flex-wrap: wrap;
+  justify-self: end;
 }
 
 nav a {
   text-decoration: none;
   color: var(--text-secondary);
-  padding: 10px 20px;
+  padding: 12px 24px;
   border-radius: 50px;
-  font-weight: 500;
+  font-weight: 600;
   font-size: 0.95rem;
   transition: var(--transition);
   position: relative;
   overflow: hidden;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.8) 0%, rgba(248, 250, 252, 0.8) 100%);
+  border: 1px solid rgba(37, 99, 235, 0.1);
+  backdrop-filter: blur(10px);
 }
 
 nav a::before {
@@ -170,7 +205,7 @@ nav a::before {
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, var(--primary-blue), var(--secondary-blue));
+  background: linear-gradient(135deg, var(--primary-blue) 0%, #8b5cf6 50%, #ec4899 100%);
   transition: var(--transition);
   z-index: -1;
 }
@@ -181,8 +216,9 @@ nav a:hover::before {
 
 nav a:hover {
   color: white;
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(37, 99, 235, 0.25);
+  border-color: transparent;
 }
 
 /* Main Content */
