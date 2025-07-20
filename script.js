@@ -356,3 +356,40 @@ document.addEventListener('DOMContentLoaded', function() {
     
     console.log('🚀 Portfolio enhanced successfully! All features loaded.');
 });
+
+// =======================
+    // BACK TO TOP BUTTON
+    // =======================
+    
+    // Create back to top button
+    const backToTopButton = document.createElement('button');
+    backToTopButton.className = 'back-to-top';
+    backToTopButton.innerHTML = '↑';
+    backToTopButton.setAttribute('aria-label', 'Back to top');
+    backToTopButton.title = 'Back to top';
+    document.body.appendChild(backToTopButton);
+    
+    // Show/hide button on scroll
+    const toggleBackToTopButton = debounce(() => {
+        if (window.pageYOffset > 300) {
+            backToTopButton.classList.add('visible');
+        } else {
+            backToTopButton.classList.remove('visible');
+        }
+    }, 100);
+    
+    window.addEventListener('scroll', toggleBackToTopButton);
+    
+    // Smooth scroll to top when clicked
+    backToTopButton.addEventListener('click', function() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+        
+        // Add click animation
+        this.style.transform = 'translateY(-1px) scale(0.9)';
+        setTimeout(() => {
+            this.style.transform = '';
+        }, 150);
+    });
