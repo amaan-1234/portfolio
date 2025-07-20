@@ -1,3 +1,24 @@
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  background: #f8f9fa;
+  color: #333;
+}
+
+header {
+  background: #1e1e1e;
+  color: white;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+header h1 {
+  margin-bottom: 10px;
+  font-size: 2.5em;
+}
+
 .header-content {
   display: flex;
   align-items: center;
@@ -22,4 +43,80 @@
 
 .header-text {
   max-width: 500px;
+}
+
+nav a {
+  margin: 0 10px;
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+.project {
+  margin-bottom: 30px;
+}
+
+.project h3 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.project-date {
+  font-size: 0.9em;
+  color: #777;
+  font-style: italic;
+}
+
+.project ul {
+  padding-left: 20px;
+  margin-top: 0;
+}
+
+section {
+  padding: 40px 20px;
+  max-width: 800px;
+  margin: auto;
+}
+#contact a {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+#contact a:hover {
+  text-decoration: underline;
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #0056b3;
+}
+
+
+section h2 {
+  border-bottom: 2px solid #ccc;
+  padding-bottom: 10px;
+}
+
+footer {
+  background: #1e1e1e;
+  color: white;
+  text-align: center;
+  padding: 20px;
 }
